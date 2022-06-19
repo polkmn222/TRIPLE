@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tjoeun.mapper.TRMapper">
+	
+	<!-- 로그인 -->
+	<!-- 로그인 -->
+	<select id="login" resultType="String"
+		parameterType="com.tjoeun.vo.TRVO">
+		SELECT uid
+		FROM truser
+		WHERE uid = #{uid} AND pwd = #{pwd}
+	</select>
+
+	<!-- 아이디 찾기 -->
+	<select id="forgot" resultType="String"
+		parameterType="com.tjoeun.vo.TRVO">
+		SELECT uid
+		FROM truser
+		WHERE uid = #{uid} AND email =
+		#{email}
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="com.tjoeun.vo.TRVO">
+		INSERT INTO truser
+		VALUES(#{uid},#{pwd},#{name},#{phone},#{address},#{root},#{email})
+	</insert>
+
+	<!-- 특정 아이디 찾기 -->
+	<select id="getUserById" resultType="com.tjoeun.vo.TRVO"
+		parameterType="String">
+		SELECT uid, pwd, name, phone, address, root, email
+		FROM
+		truser
+		WHERE uid = #{uid}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="updateByMap" parameterType="map">
+		UPDATE truser
+		SET
+		phone=#{phone},
+		pwd = #{pwd}
+		WHERE uid=#{uid}
+	</update>
+
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM truser WHERE
+		uid=#{uid}
+	</delete>
+
+	<!-- ================================================================= -->
+	<!-- 게시판 -->
+	<!-- 글쓰기 -->
+	<insert id="addBoard" parameterType="com.tjoeun.vo.ReviwVO"
+		useGeneratedKeys="true" keyProperty="num">
+		INSERT INTO trreview VALUES(null,
+		#{title},#{author},#{contents},NOW())
+	</insert>
+
+	<!-- 파일 업로드 -->
+	<insert id="addFileInfo" parameterType="com.tjoeun.vo.AttachVO">
+		INSERT INTO trattach
+		VALUES(null, #{board_num}, #{filename}, #{filesize})
+	</insert>
+
+	<!-- 게시판 리스트 -->
+	<select id="boardList" resultType="map">
+		SELECT * FROM trreview b LEFT
+		OUTER JOIN trattach a
+		ON b.num = a.board_num
+	</select>
+
+	<!-- 게시판 상세보기 -->
+	<select id="bdetail" resultType="map" parameterType="Integer">
+		SELECT *
+		FROM trreview b
+		LEFT OUTER JOIN trattach a
+		ON b.num=a.board_num
+		WHERE
+		b.num = #{num};
+	</select>
+
+	<!-- 특정 파일 불러오기 -->
+	<select id="getFilename" parameterType="Integer"
+		resultType="String">
+		SELECT filename FROM trattach WHERE att_num=#{num}
+	</select>
+
+	<!-- 특정 게시판 번호 불러오기 -->
+	<select id="getBoardByNum" resultType="com.tjoeun.vo.ReviwVO"
+		parameterType="Integer">
+		SELECT *
+		FROM trreview
+		WHERE num = #{num}
+	</select>
+
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="com.tjoeun.vo.ReviwVO">
+		UPDATE trreview SET
+		title=#{title},
+		contents=#{contents}
+		WHERE num=#{num}
+	</update>
+
+	<!-- 파일 삭제 -->
+	<delete id="deleteFileInfo" parameterType="Integer">
+		DELETE FROM trattach
+		WHERE att_num=#{num}
+	</delete>
+
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM trreview WHERE
+		num=#{num}
+	</delete>
+
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM trreview
+	</select>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" resultType="com.tjoeun.vo.ReviwVO">
+
+		SELECT *
+		FROM (
+
+		SELECT
+		@rownum:=@rownum+1 rn, A.*
+		FROM (
+		SELECT *
+		FROM trreview,
+		(SELECT
+		@ROWNUM:=0) t
+		ORDER BY num DESC
+		) A
+		) B
+
+		WHERE RN BETWEEN #{start} AND
+		#{end}
+
+	</select>
+
+
+
+	<!-- ================================================================= -->
+	<!-- 댓글 -->
+	<!-- 특정글 댓글 리스트 -->
+	<select id="cList" resultType="com.tjoeun.vo.CommentVO">
+		SELECT *
+		FROM trcomment 
+		WHERE
+		comment_num = #{comment_num} 
+		ORDER BY cnum
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<insert id="cCreate" parameterType="com.tjoeun.vo.CommentVO"
+		useGeneratedKeys="true" keyProperty="cnum"> 
+		INSERT INTO trcomment
+		VALUES (NULL, #{comment_num} , #{comment_writer} , #{comment}, NOW() )
+	</insert>
+	
+	<!-- 댓글 삭제-->
+	<delete id="cDelete" parameterType="Integer"> 
+		DELETE FROM trcomment 
+		WHERE cnum = #{cnum}
+	</delete>
+
+
+
+</mapper>

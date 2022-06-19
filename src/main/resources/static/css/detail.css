@@ -1,0 +1,206 @@
+body {
+	min-height: 100vh;
+	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
+		to(#1d466c));
+	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+}
+
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+
+.button1 {
+	width: 90px;
+	height: 37px;
+}
+
+.button2 {
+	width: 90px;
+	height: 37px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 350px;
+	position: absolute;
+}
+
+span {
+	font-size: 24px;
+}
+
+img {
+	width: 200px;
+	height: 200px;
+}
+
+[contenteditable=true]:empty:before {
+	content: attr(placeholder);
+	display: block;
+}
+
+div[contenteditable=true] {
+	border: 1px solid #ddd;
+	color: #333;
+	font-size: 20px;
+	width: 600px;
+	height: 300px;
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+	color: blue;
+}
+
+a.link_del {
+	border: 1px solid red;
+	color: red;
+	font-size: x-small;
+}
+
+.bbsList {
+	display: table;
+	clear: both;
+	width: 1200px;
+	border-collapse: collapse;
+}
+
+.bbsList th {
+	border-color: lightgray;
+	background: #fcfcfc;
+	padding: 10px 0 10px 0;
+	text-align: center;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	font-weight: 400;
+}
+
+.bbsList .checkbox {
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fff),
+		color-stop(1, #fff));
+	background: -moz-linear-gradient(center top, #fff 5%, #fff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff',
+		endColorstr='#fff');
+	background-color: #fff;
+	text-indent: 0;
+	border: 1px solid #dcdcdc;
+	display: inline-block;
+	color: #000000;
+	font-size: 10px;
+	width: 10px;
+	height: 10px;
+	line-height: 12px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #ffffff;
+}
+
+.bbsList .checkbox_checked {
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fff),
+		color-stop(1, #fff));
+	background: -moz-linear-gradient(center top, #fff 5%, #fff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff',
+		endColorstr='#fff');
+	background-color: #fff;
+	text-indent: 0;
+	border: 1px solid #ffaa89;
+	display: inline-block;
+	color: #ea4d10;
+	font-size: 10px;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 1px 1px 0px #ffffff;
+}
+
+.bbsList .body td {
+	text-align: center;
+	padding: 5px 9px 5px 9px;
+	border-bottom-color: #eeeeee;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+/* 스마트폰 세로 */
+@media screen and (max-device-width: 320px) {
+	.bbsList {
+		width: 80vmin;
+		height: 80vmin;
+	}
+}
+/* 태블릿 세로 */
+@media screen and (min-width : 321px) and (max-width : 767px) and
+	(orientation : portrait ) {
+	.bbsList {
+		/* width: 90vmin;
+		height: 90vmin; */
+		width: 100%;
+		height: 100%;
+	}
+}
+/* iPad Pro 세로 */
+ @media screen and (min-width : 768px) and (orientation : portrait ) {
+	.bbsList {
+		width: 100%;
+		height: 100%;
+	}
+} 
+/* 스마트폰 가로 */
+ @media screen and (max-width : 767px) and (orientation : landscape ) {
+	.bbsList {
+		/* width: 70vmax;
+		height: 60vmin; */
+		width: 100%;
+		height: 100%;
+	}
+} 
+/* 태블릿 가로 */
+ @media screen and (min-width : 768px) and (max-width : 1365px) and
+	(orientation : landscape ) {
+	.bbsList {
+		/* width: 90vmax;
+		height: 70vmin; */
+		width: 100%;
+		height: 100%;
+	}
+} 
+/* iPad Pro 가로, 데스크탑 */
+ @media screen and (min-width : 1366px) and (max-width : 1599px) and
+	(orientation : landscape ) {
+	.bbsList {
+		/* width: 90vmax;
+		height: 80vmin; */
+		width: 100%;
+		height: 100%;
+	}
+} 
+/* 큰 모니터 16:9 */
+@media screen and (min-width : 1600px) {
+	.bbsList {
+		width: 100%;
+		height: 100%;
+	}
+}
+
