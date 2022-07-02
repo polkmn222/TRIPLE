@@ -9,10 +9,12 @@
    
   
 # 홈       
-![home0](https://user-images.githubusercontent.com/100742360/163910594-872f0385-d063-41cd-8bcd-48b6fa4c6d64.png)   
+![홈](https://user-images.githubusercontent.com/100742360/176991013-8eab4927-0c22-4eee-b6c5-f43d1c14ae09.PNG)
+   
    
 # 메뉴
-![메뉴](https://user-images.githubusercontent.com/100742360/163910960-ef4c1823-2f92-4b54-8388-0a7fdc8d4aeb.PNG)   
+![메뉴](https://user-images.githubusercontent.com/100742360/176991018-6f8b9e9a-ca0f-4f23-8804-856361913ffe.PNG)
+
    
 # 로그인 화면
 ![로그인](https://user-images.githubusercontent.com/100742360/163911244-6863776d-c087-42fa-9343-b33999443d2e.PNG)   
